@@ -1,86 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Points Plaza</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#eef8ff;padding-bottom:80px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#EEF8FF;padding-bottom:90px}
 .header{
-background:linear-gradient(135deg,#42a5f5,#1e88e5);
-color:#fff;padding:25px 20px;border-radius:0 0 25px 25px}
-.header h2{font-size:26px}
-.balance{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px}
-.box{background:#fff;border-radius:18px;padding:15px;
-box-shadow:0 4px 12px rgba(0,0,0,.08)}
-.box small{color:#777}.box h3{color:#1e88e5;margin-top:6px}
-.card{background:#fff;margin:15px;border-radius:18px;padding:15px;
-box-shadow:0 4px 12px rgba(0,0,0,.08)}
-.progress{height:10px;background:#dbefff;border-radius:20px;
-overflow:hidden;margin-top:8px}
-#taskBar{height:100%;width:0;background:#2196f3}
-.mile{display:flex;justify-content:space-between;align-items:center;
-padding:12px 0;border-bottom:1px solid #eee}
-.mile button{background:#2196f3;color:#fff;border:none;padding:8px 14px;
-border-radius:8px}
-.popup{position:fixed;inset:0;background:rgba(0,0,0,.45);
-display:flex;justify-content:center;align-items:center}
-.popupBox{background:#fff;width:90%;max-width:330px;padding:20px;
-border-radius:20px;text-align:center}
-.popupBox a{display:block;text-decoration:none;color:#fff;padding:12px;
-border-radius:12px;margin:10px 0;font-weight:bold}
-.wa{background:#25D366}.tg{background:#229ED9}
-.popupBox button{width:100%;padding:12px;border:none;border-radius:12px;
-background:#1e88e5;color:#fff}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:70px;background:#fff;
+background:linear-gradient(135deg,#4FC3F7,#2196F3);
+padding:20px;
+color:#fff;
+border-radius:0 0 25px 25px;
+}
+.top{display:flex;justify-content:space-between;align-items:center}
+.noti{
+width:42px;height:42px;border-radius:50%;
+background:rgba(255,255,255,.2);
+display:flex;justify-content:center;align-items:center;
+font-size:22px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+padding:15px;
+}
+.item{
+background:#fff;
+border-radius:15px;
+padding:12px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.08)
+}
+.item h3{color:#2196F3}
+.card{
+background:#fff;
+margin:15px;
+border-radius:18px;
+padding:16px;
+box-shadow:0 5px 15px rgba(0,0,0,.08)
+}
+.circle{
+width:120px;height:120px;border-radius:50%;
+background:conic-gradient(#2196F3 0%,#D9EEFF 0%);
+display:flex;justify-content:center;align-items:center;
+margin:auto;
+}
+.inner{
+width:92px;height:92px;border-radius:50%;
+background:#fff;
+display:flex;justify-content:center;align-items:center;
+font-size:22px;font-weight:bold;color:#2196F3;
+}
+.mile{
+display:flex;justify-content:space-between;
+padding:12px 0;border-bottom:1px solid #eee;
+align-items:center
+}
+.mile button{
+background:#2196F3;color:#fff;border:none;
+padding:8px 14px;border-radius:8px
+}
+.bottom{
+position:fixed;bottom:0;left:0;right:0;
+height:70px;background:#fff;
 display:flex;justify-content:space-around;align-items:center;
-box-shadow:0 -4px 12px rgba(0,0,0,.08)}
-.bottom button{background:none;border:none;color:#555;font-size:12px}
-#adminBtn{display:none;width:100%;margin-top:12px;padding:12px;
-background:#1565c0;color:#fff;border:none;border-radius:12px}
+box-shadow:0 -4px 15px rgba(0,0,0,.1)
+}
+.bottom div{text-align:center;color:#666;font-size:12px}
+.popup{
+position:fixed;inset:0;background:rgba(0,0,0,.45);
+display:flex;justify-content:center;align-items:center;
+padding:20px
+}
+.box{
+background:#fff;border-radius:18px;padding:20px;
+width:100%;max-width:330px;text-align:center
+}
+.btn{display:block;text-decoration:none;color:#fff;padding:12px;border-radius:12px;margin:10px 0}
+.wa{background:#25D366}.tg{background:#229ED9}
 </style>
 </head>
 <body>
 
-<!-- Community Popup -->
 <div class="popup" id="popup">
-<div class="popupBox">
+<div class="box">
 <h2>Join Our Official Community</h2>
-<p>Get updates, new tasks & announcements.</p>
-
-<a href="https://wa.me/2340000000000" class="wa">WhatsApp</a>
-<a href="https://t.me/yourchannel" class="tg">Telegram</a>
-
-<button onclick="closePopup()">Continue</button>
+<p>Get updates & new tasks</p>
+<a class="btn wa" href="#">WhatsApp</a>
+<a class="btn tg" href="#">Telegram</a>
+<button onclick="popup.style.display='none'" style="width:100%;padding:12px;border:none;background:#2196F3;color:#fff;border-radius:12px">Continue</button>
 </div>
 </div>
 
 <div class="header">
-<h2>Welcome 👋</h2>
-<p id="welcome">User</p>
+<div class="top">
+<div>
+<h2 id="name">Welcome</h2>
+<p>Points Plaza</p>
+</div>
+<div class="noti">🔔</div>
+</div>
 </div>
 
-<div class="balance">
-<div class="box">
-<small>Task Balance</small>
-<h3 id="taskBal">0 PTS</h3>
-</div>
-
-<div class="box">
-<small>Referral Balance</small>
-<h3 id="refBal">0 PTS</h3>
-</div>
+<div class="grid">
+<div class="item"><small>Task</small><h3 id="task">0</h3></div>
+<div class="item"><small>Referral</small><h3 id="ref">0</h3></div>
+<div class="item"><small>Tasks</small><h3 id="done">0</h3></div>
 </div>
 
 <div class="card">
-<h3>Task Progress</h3>
-<p><span id="done">0</span> / <span id="total">10</span> Tasks Completed</p>
+<h3 style="text-align:center;margin-bottom:15px">Task Progress</h3>
 
-<div class="progress">
-<div id="taskBar"></div>
+<div class="circle" id="circle">
+<div class="inner"><span id="per">0%</span></div>
 </div>
+
+<p style="text-align:center;margin-top:12px">
+<span id="completed">0</span> / <span id="total">10</span> Completed
+</p>
 </div>
 
 <div class="card">
@@ -103,45 +143,34 @@ background:#1565c0;color:#fff;border:none;border-radius:12px}
 </div>
 
 <div class="card">
-<h3>Profile</h3>
-
-<p><b>Name:</b> <span id="fullName"></span></p>
-<p><b>Email:</b> <span id="email"></span></p>
-<p><b>Joined:</b> <span id="joined"></span></p>
-
-<button id="adminBtn">⚙️ Admin Panel</button>
+<h3>Notifications</h3>
+<p>🎉 Welcome to Points Plaza!</p>
+<p style="margin-top:8px">📢 Complete tasks to earn PTS.</p>
 </div>
 
-<nav class="bottom">
-<button>🏠<br>Home</button>
-<button>📋<br>Tasks</button>
-<button>👥<br>Team</button>
-<button>💸<br>Withdraw</button>
-<button>👤<br>Profile</button>
-</nav>
+<div class="bottom">
+<div>🏠<br>Home</div>
+<div>📋<br>Tasks</div>
+<div>👥<br>Team</div>
+<div>💸<br>Withdraw</div>
+<div>👤<br>Profile</div>
+</div>
 
 <script>
-const user = JSON.parse(localStorage.getItem("currentUser"));
+let u=JSON.parse(localStorage.getItem("currentUser"));
+if(u){
+name.innerHTML="Hi, "+u.fullname;
+task.innerHTML=u.taskBalance+" PTS";
+ref.innerHTML=u.referralBalance+" PTS";
+done.innerHTML=u.completedTasks||0;
+completed.innerHTML=u.completedTasks||0;
 
-if(!user){
-window.location.href="index.html";
-}
-
-welcome.innerHTML=user.fullname;
-fullName.innerHTML=user.fullname;
-email.innerHTML=user.email;
-joined.innerHTML=user.joined;
-taskBal.innerHTML=user.taskBalance+" PTS";
-refBal.innerHTML=user.referralBalance+" PTS";
-
-if(user.email==="azeemolajuwon25@gmail.com"){
-adminBtn.style.display="block";
-}
-
-function closePopup(){
-popup.style.display="none";
+let totalTasks=10;
+let percent=Math.round(((u.completedTasks||0)/totalTasks)*100);
+per.innerHTML=percent+"%";
+circle.style.background=`conic-gradient(#2196F3 ${percent}%,#D9EEFF ${percent}%)`;
 }
 </script>
 
 </body>
-  </html>
+</html>
