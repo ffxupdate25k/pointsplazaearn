@@ -1,70 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Points Plaza - Register</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Points Plaza - Complete tasks, refer friends and earn rewards."
-  >
-
-  <title>Points Plaza</title>
-
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-  <!-- =====================================================
-       AUTH SCREEN
-  ====================================================== -->
+<div class="container">
 
-  <div id="authScreen" class="auth-screen">
+  <div class="logo">
+      <h1>Points Plaza</h1>
+      <p>Earn PTS from Tasks & Referrals</p>
+  </div>
 
-    <div class="auth-container">
+  <div class="card">
 
-      <!-- BRAND -->
+      <h2>Create Account</h2>
 
-      <div class="auth-brand">
+      <input type="text" id="username" placeholder="Username">
 
-        <div class="brand-logo">
-          P
-        </div>
+      <input type="email" id="email" placeholder="Email">
 
-        <div>
-          <h1>Points Plaza</h1>
-          <p>Earn. Complete. Get rewarded.</p>
-        </div>
+      <input type="text" id="fullname" placeholder="Full Name">
 
-      </div>
+      <input type="password" id="password" placeholder="Password">
 
+      <input type="password" id="confirm" placeholder="Confirm Password">
 
-      <!-- AUTH TABS -->
+      <button id="registerBtn">REGISTER</button>
 
-      <div class="auth-tabs">
+      <div id="loadingBox" class="hidden">
 
-        <button
-          type="button"
-          id="loginTab"
-          class="auth-tab active"
-        >
-          Login
-        </button>
+          <p id="loadingText">Registering...</p>
 
-        <button
-          type="button"
-          id="registerTab"
-          class="auth-tab"
-        >
-          Register
-        </button>
+          <div class="progress">
+              <div id="bar"></div>
+          </div>
+
+          <span id="percent">0%</span>
 
       </div>
+
+      <p class="login">
+          Already have an account?
+          <a href="login.html">Login</a>
+      </p>
+
+  </div>
+
+</div>
+
+<script src="js/auth.js"></script>
+
+</body>
+  </html>      </div>
 
 
       <!-- =================================================
