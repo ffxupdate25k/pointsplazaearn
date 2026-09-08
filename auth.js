@@ -1,60 +1,61 @@
 const btn = document.getElementById("registerBtn");
-const box = document.getElementById("loadingBox");
-const bar = document.getElementById("bar");
-const percent = document.getElementById("percent");
 
-btn.onclick = () => {
+btn.addEventListener("click", register);
 
-  let username = username.value.trim();
-  let email = email.value.trim();
-  let fullname = fullname.value.trim();
-  let password = password.value;
-  let confirm = confirm.value;
+function register(){
 
-  if(!username || !email || !fullname || !password || !confirm){
-    alert("Fill all fields");
-    return;
-  }
+const username=document.getElementById("username").value.trim();
+const email=document.getElementById("email").value.trim();
+const fullname=document.getElementById("fullname").value.trim();
+const password=document.getElementById("password").value;
+const confirm=document.getElementById("confirm").value;
 
-  if(password !== confirm){
-    alert("Passwords do not match");
-    return;
-  }
+if(!username||!email||!fullname||!password||!confirm){
+alert("Please fill all fields");
+return;
+}
 
-  box.classList.remove("hidden");
-  btn.disabled = true;
+if(password!==confirm){
+alert("Passwords do not match");
+return;
+}
 
-  let p = 0;
+document.getElementById("loadingBox").classList.remove("hidden");
 
-  let loading = setInterval(()=>{
+let bar=document.getElementById("bar");
+let percent=document.getElementById("percent");
 
-    p += 20;
+let p=0;
 
-    bar.style.width = p + "%";
-    percent.innerHTML = p + "%";
+let load=setInterval(()=>{
 
-    if(p >= 100){
+p+=20;
 
-      clearInterval(loading);
+bar.style.width=p+"%";
+percent.innerHTML=p+"%";
 
-      const user = {
-        username,
-        email,
-        fullname,
-        password,
-        taskBalance:0,
-        referralBalance:0,
-        referrals:0,
-        completedTasks:0,
-        joined:new Date().toLocaleDateString()
-      };
+if(p>=100){
 
-      localStorage.setItem("currentUser", JSON.stringify(user));
+clearInterval(load);
 
-      window.location.href = "dashboard.html";
-
-    }
-
-  },500);
-
+const user={
+username,
+email,
+fullname,
+password,
+taskBalance:0,
+referralBalance:0,
+completedTasks:0,
+referrals:0,
+joined:new Date().toLocaleDateString()
 };
+
+localStorage.setItem("currentUser",JSON.stringify(user));
+
+window.location.href="dashboard.html";
+
+}
+
+},350);
+
+}
