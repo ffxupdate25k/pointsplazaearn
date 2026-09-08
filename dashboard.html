@@ -2,156 +2,98 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Points Plaza</title>
-<link rel="stylesheet" href="css/style.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#eef8ff;color:#222}
+.header{background:linear-gradient(135deg,#42a5f5,#1e88e5);padding:25px 20px;color:#fff;border-radius:0 0 25px 25px}
+.balance{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px}
+.box{background:#fff;border-radius:18px;padding:15px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.box h3{color:#1e88e5;margin-top:5px}
+.card{background:#fff;margin:15px;border-radius:18px;padding:15px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.progress{height:10px;background:#dbefff;border-radius:20px;overflow:hidden;margin-top:8px}
+.bar{height:100%;width:0;background:#2196f3}
+.mile{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:65px;background:#fff;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -4px 12px rgba(0,0,0,.08)}
+.bottom button{background:none;border:none;color:#666;font-size:12px}
+.popup{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;justify-content:center;align-items:center}
+.popupBox{background:#fff;width:90%;max-width:330px;padding:20px;border-radius:20px;text-align:center}
+.linkBtn{display:block;text-decoration:none;color:#fff;padding:12px;border-radius:12px;margin:10px 0}
+.wa{background:#25D366}.tg{background:#229ED9}
+</style>
 </head>
 <body>
 
-<!-- COMMUNITY POPUP -->
-<div id="communityPopup" class="popup">
-  <div class="popup-box">
-    <h2>📢 Join Our Official Community</h2>
+<div id="popup" class="popup">
+  <div class="popupBox">
+    <h2>Join Our Official Community</h2>
     <p>Get updates, new tasks and announcements.</p>
 
-    <a href="https://wa.me/2340000000000" class="wa">WhatsApp</a>
-    <a href="https://t.me/yourchannel" class="tg">Telegram</a>
+    <a class="linkBtn wa" href="https://wa.me/2340000000000">WhatsApp</a>
+    <a class="linkBtn tg" href="https://t.me/yourchannel">Telegram</a>
 
-    <button onclick="closePopup()">Continue</button>
+    <button onclick="popup.style.display='none'">Continue</button>
   </div>
 </div>
 
-<!-- HOME -->
-<section id="home" class="page">
-
+<div class="header">
   <h2>Welcome 👋</h2>
-  <p id="userName"></p>
+  <p id="name">Username</p>
+</div>
 
-  <div class="balance">
-    <div class="box">
-      <small>Task Balance</small>
-      <h3 id="taskBal">0 PTS</h3>
-    </div>
-
-    <div class="box">
-      <small>Referral Balance</small>
-      <h3 id="refBal">0 PTS</h3>
-    </div>
+<div class="balance">
+  <div class="box">
+    <small>Task Balance</small>
+    <h3 id="task">0 PTS</h3>
   </div>
 
-  <div class="card">
-    <h3>Task Progress</h3>
-    <p id="taskCount">0 / 0 Completed</p>
+  <div class="box">
+    <small>Referral Balance</small>
+    <h3 id="ref">0 PTS</h3>
+  </div>
+</div>
 
-    <div class="progress">
-      <div id="taskBar"></div>
-    </div>
+<div class="card">
+  <h3>Task Progress</h3>
+  <p>0 / 10 Completed</p>
+
+  <div class="progress">
+    <div class="bar"></div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Referral Milestones</h3>
+
+  <div class="mile">
+    <span>10 Referrals</span>
+    <button>Claim</button>
   </div>
 
-  <div class="card">
-    <h3>Referral Milestones</h3>
-
-    <div class="mile">
-      <span>10 Referrals</span>
-      <button disabled>Claim 100 PTS</button>
-    </div>
-
-    <div class="mile">
-      <span>25 Referrals</span>
-      <button disabled>Claim 300 PTS</button>
-    </div>
+  <div class="mile">
+    <span>25 Referrals</span>
+    <button disabled>Locked</button>
   </div>
+</div>
 
-</section>
+<div class="bottom">
+  <button>🏠<br>Home</button>
+  <button>📋<br>Tasks</button>
+  <button>👥<br>Team</button>
+  <button>💸<br>Withdraw</button>
+  <button>👤<br>Profile</button>
+</div>
 
-<!-- TASKS -->
-<section id="tasks" class="page hide">
-
-  <h2>Tasks</h2>
-
-  <div class="task">
-    <h3>Join Telegram</h3>
-    <p>Reward: 50 PTS</p>
-
-    <a href="#">Open Task</a>
-
-    <button>Submit Screenshot</button>
-  </div>
-
-</section>
-
-<!-- TEAM -->
-<section id="team" class="page hide">
-
-  <h2>My Team</h2>
-
-  <div class="card">
-    <small>Referral Link</small>
-
-    <input id="refLink" readonly>
-
-    <button onclick="copyLink()">Copy Link</button>
-  </div>
-
-  <div class="card">
-    <h3>Total Referrals</h3>
-    <h1>0</h1>
-  </div>
-
-</section>
-
-<!-- WITHDRAWAL -->
-<section id="withdraw" class="page hide">
-
-  <h2>Withdrawal</h2>
-
-  <select>
-    <option>Task Balance</option>
-    <option>Referral Balance</option>
-  </select>
-
-  <input placeholder="Account Number">
-  <input placeholder="Account Name">
-  <input placeholder="Bank Name">
-
-  <button>Request Withdrawal</button>
-
-</section>
-
-<!-- PROFILE -->
-<section id="profile" class="page hide">
-
-  <h2>Profile</h2>
-
-  <div class="card">
-    <p><b>Name:</b> <span id="fullName"></span></p>
-    <p><b>Email:</b> <span id="emailTxt"></span></p>
-    <p><b>Joined:</b> <span id="joined"></span></p>
-  </div>
-
-  <!-- ADMIN BUTTON -->
-  <button id="adminBtn" style="display:none">
-    ⚙️ Admin Panel
-  </button>
-
-</section>
-
-<!-- BOTTOM NAV -->
-<nav class="bottom">
-
-  <button onclick="showPage('home')">Home</button>
-
-  <button onclick="showPage('tasks')">Tasks</button>
-
-  <button onclick="showPage('team')">Team</button>
-
-  <button onclick="showPage('withdraw')">Withdrawal</button>
-
-  <button onclick="showPage('profile')">Profile</button>
-
-</nav>
-
-<script src="js/dashboard.js"></script>
+<script>
+let u=JSON.parse(localStorage.getItem("currentUser"));
+if(u){
+name.innerHTML=u.fullname;
+task.innerHTML=u.taskBalance+" PTS";
+ref.innerHTML=u.referralBalance+" PTS";
+}
+</script>
 
 </body>
-                       </html>
+    </html>
