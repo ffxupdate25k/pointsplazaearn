@@ -4,71 +4,146 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Points Plaza</title>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#EEF8FF;padding-bottom:90px}
-.header{
-background:linear-gradient(135deg,#4FC3F7,#2196F3);
-padding:20px;
-color:#fff;
-border-radius:0 0 25px 25px;
-}
-.top{display:flex;justify-content:space-between;align-items:center}
-.noti{
-width:42px;height:42px;border-radius:50%;
-background:rgba(255,255,255,.2);
-display:flex;justify-content:center;align-items:center;
-font-size:22px;
-}
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-padding:15px;
-}
-.item{
-background:#fff;
-border-radius:15px;
-padding:12px;
-text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,.08)
-}
-.item h3{color:#2196F3}
-.card{
-background:#fff;
-margin:15px;
-border-radius:18px;
-padding:16px;
-box-shadow:0 5px 15px rgba(0,0,0,.08)
-}
-.circle{
-width:120px;height:120px;border-radius:50%;
-background:conic-gradient(#2196F3 0%,#D9EEFF 0%);
-display:flex;justify-content:center;align-items:center;
-margin:auto;
-}
-.inner{
-width:92px;height:92px;border-radius:50%;
-background:#fff;
-display:flex;justify-content:center;align-items:center;
-font-size:22px;font-weight:bold;color:#2196F3;
-}
-.mile{
-display:flex;justify-content:space-between;
-padding:12px 0;border-bottom:1px solid #eee;
-align-items:center
-}
-.mile button{
-background:#2196F3;color:#fff;border:none;
-padding:8px 14px;border-radius:8px
-}
-.bottom{
-position:fixed;bottom:0;left:0;right:0;
-height:70px;background:#fff;
-display:flex;justify-content:space-around;align-items:center;
-box-shadow:0 -4px 15px rgba(0,0,0,.1)
-}
+body{background:#EEF7FF;padding-bottom:85px;color:#222}
+.header{background:#fff;padding:18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.logo{color:#2196F3;font-size:22px;font-weight:bold}
+.bell{width:42px;height:42px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center}
+.hero{padding:18px}
+.hero h2{font-size:28px}
+.hero p{color:#666;margin-top:5px}
+.wallet{margin:0 15px;background:linear-gradient(135deg,#42A5F5,#1E88E5);border-radius:22px;color:#fff;padding:18px}
+.wallet .top{display:flex;justify-content:space-between;align-items:center}
+.withdraw{background:#FFD54F;color:#222;padding:10px 16px;border-radius:12px;font-weight:bold}
+.amount{font-size:34px;font-weight:bold;margin:10px 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
+.small{background:rgba(255,255,255,.15);padding:14px;border-radius:15px}
+.small h3{margin-top:5px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:15px}
+.stat{background:#fff;border-radius:16px;padding:14px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.08)}
+.stat div{font-size:24px}
+.stat p{font-size:12px;margin-top:6px}
+.card{background:#fff;margin:0 15px 15px;border-radius:20px;padding:18px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
+.head{display:flex;justify-content:space-between}
+.circle{width:100px;height:100px;border-radius:50%;background:conic-gradient(#2196F3 0%,#D9EEFF 0%);display:flex;align-items:center;justify-content:center;margin:15px 0}
+.inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#2196F3}
+.mile{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee}
+.mile button{background:#2196F3;color:#fff;border:none;padding:8px 14px;border-radius:8px}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:70px;background:#fff;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -4px 15px rgba(0,0,0,.08)}
+.nav{text-align:center;font-size:11px;color:#666}
+.nav div{font-size:22px;margin-bottom:3px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">Points Plaza</div>
+  <div class="bell">🔔</div>
+</div>
+
+<div class="hero">
+  <h2>Good Evening, <span id="user">User</span> 👋</h2>
+  <p>Here's your PTS dashboard today.</p>
+</div>
+
+<div class="wallet">
+  <div class="top">
+    <div>
+      <small>AVAILABLE BALANCE</small>
+      <div class="amount" id="main">0 PTS</div>
+    </div>
+    <div class="withdraw">Withdraw</div>
+  </div>
+
+  <div class="row">
+    <div class="small">
+      <small>Task Wallet</small>
+      <h3 id="task">0 PTS</h3>
+    </div>
+    <div class="small">
+      <small>Referral Wallet</small>
+      <h3 id="ref">0 PTS</h3>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div>📋</div><p>Tasks</p></div>
+  <div class="stat"><div>💸</div><p>Withdraw</p></div>
+  <div class="stat"><div>👥</div><p>Referrals</p></div>
+  <div class="stat"><div>📜</div><p>History</p></div>
+</div>
+
+<div class="card">
+  <div class="head">
+    <h3>Today's Progress</h3>
+    <b id="count">0/10</b>
+  </div>
+
+  <div class="circle" id="ring">
+    <div class="inner"><span id="percent">0%</span></div>
+  </div>
+
+  <p>Complete tasks to increase your Task Wallet.</p>
+</div>
+
+<div class="card">
+  <h3>Referral Milestones</h3>
+
+  <div class="mile">
+    <span>10 Referrals</span>
+    <button disabled>100 PTS</button>
+  </div>
+
+  <div class="mile">
+    <span>25 Referrals</span>
+    <button disabled>300 PTS</button>
+  </div>
+
+  <div class="mile">
+    <span>50 Referrals</span>
+    <button disabled>700 PTS</button>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Notifications</h3>
+  <p>🎉 Welcome to Points Plaza.</p>
+  <p style="margin-top:8px">📢 New tasks will appear here.</p>
+</div>
+
+<div class="bottom">
+  <div class="nav"><div>🏠</div>Home</div>
+  <div class="nav"><div>📋</div>Tasks</div>
+  <div class="nav"><div>⚡</div>Earn</div>
+  <div class="nav"><div>👥</div>Referrals</div>
+  <div class="nav"><div>👤</div>Profile</div>
+</div>
+
+<script>
+const u=JSON.parse(localStorage.getItem("currentUser"))||{
+fullname:"User",taskBalance:0,referralBalance:0,completedTasks:0
+};
+
+user.innerText=u.fullname;
+task.innerText=u.taskBalance+" PTS";
+ref.innerText=u.referralBalance+" PTS";
+
+const total=u.taskBalance+u.referralBalance;
+main.innerText=total+" PTS";
+
+const totalTasks=10;
+const done=u.completedTasks||0;
+const pct=Math.round((done/totalTasks)*100);
+
+count.innerText=done+"/"+totalTasks;
+percent.innerText=pct+"%";
+ring.style.background=`conic-gradient(#2196F3 ${pct}%,#D9EEFF ${pct}%)`;
+</script>
+
+</body>
+</html>}
 .bottom div{text-align:center;color:#666;font-size:12px}
 .popup{
 position:fixed;inset:0;background:rgba(0,0,0,.45);
