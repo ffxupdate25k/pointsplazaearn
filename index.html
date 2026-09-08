@@ -4,67 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Points Plaza - Register</title>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{
-  background:linear-gradient(135deg,#eaf6ff,#d6efff);
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-.container{width:100%;max-width:400px}
-.logo{text-align:center;margin-bottom:25px}
+body{background:linear-gradient(135deg,#eaf6ff,#d6efff);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+.container{width:100%;max-width:380px}
+.logo{text-align:center;margin-bottom:20px}
 .logo h1{color:#1e88e5;font-size:34px}
 .logo p{color:#666}
-.card{
-  background:#fff;
-  border-radius:20px;
-  padding:22px;
-  box-shadow:0 10px 30px rgba(30,136,229,.15);
-}
-h2{text-align:center;color:#1565c0;margin-bottom:15px}
-input{
-  width:100%;
-  padding:14px;
-  margin:8px 0;
-  border:1px solid #cfe8ff;
-  border-radius:12px;
-  outline:none;
-}
-input:focus{border-color:#1e88e5}
-button{
-  width:100%;
-  padding:14px;
-  margin-top:10px;
-  border:none;
-  border-radius:12px;
-  background:#1e88e5;
-  color:#fff;
-  font-weight:bold;
-  font-size:16px;
-}
-.progress{
-  width:100%;
-  height:10px;
-  background:#dbefff;
-  border-radius:20px;
-  overflow:hidden;
-  margin:10px 0;
-}
-#bar{
-  width:0%;
-  height:100%;
-  background:#2196f3;
-  transition:.4s;
-}
-.hidden{display:none}
-#loadingBox{text-align:center;margin-top:15px}
+.card{background:#fff;padding:22px;border-radius:20px;box-shadow:0 10px 25px rgba(30,136,229,.15)}
+.card h2{text-align:center;color:#1565c0;margin-bottom:15px}
+input{width:100%;padding:14px;margin:8px 0;border:1px solid #cfe8ff;border-radius:12px}
+button{width:100%;padding:14px;background:#1e88e5;color:#fff;border:none;border-radius:12px;font-weight:bold;margin-top:10px}
 .login{text-align:center;margin-top:15px}
 .login a{color:#1e88e5;text-decoration:none;font-weight:bold}
+.hidden{display:none}
+.progress{height:10px;background:#dbefff;border-radius:20px;overflow:hidden;margin:10px 0}
+#bar{width:0;height:100%;background:#2196f3}
 </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">
+    <h1>Points Plaza</h1>
+    <p>Earn PTS from Tasks & Referrals</p>
+  </div>
+
+  <div class="card">
+    <h2>Create Account</h2>
+
+    <input id="username" placeholder="Username">
+    <input id="email" type="email" placeholder="Email">
+    <input id="fullname" placeholder="Full Name">
+    <input id="password" type="password" placeholder="Password">
+    <input id="confirm" type="password" placeholder="Confirm Password">
+
+    <button id="registerBtn">REGISTER</button>
+
+    <div id="loadingBox" class="hidden">
+      <p>Creating Account...</p>
+      <div class="progress"><div id="bar"></div></div>
+      <h3 id="percent">0%</h3>
+    </div>
+
+    <p class="login">Already have an account? <a href="login.html">Login</a></p>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+</body>
+</html></style>
 
 </head>
 <body>
