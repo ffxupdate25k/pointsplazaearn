@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Points Plaza</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- COMMUNITY POPUP -->
+<div id="communityPopup" class="popup">
+  <div class="popup-box">
+    <h2>📢 Join Our Official Community</h2>
+    <p>Get updates, new tasks and announcements.</p>
+
+    <a href="https://wa.me/2340000000000" class="wa">WhatsApp</a>
+    <a href="https://t.me/yourchannel" class="tg">Telegram</a>
+
+    <button onclick="closePopup()">Continue</button>
+  </div>
+</div>
+
+<!-- HOME -->
+<section id="home" class="page">
+
+  <h2>Welcome 👋</h2>
+  <p id="userName"></p>
+
+  <div class="balance">
+    <div class="box">
+      <small>Task Balance</small>
+      <h3 id="taskBal">0 PTS</h3>
+    </div>
+
+    <div class="box">
+      <small>Referral Balance</small>
+      <h3 id="refBal">0 PTS</h3>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Task Progress</h3>
+    <p id="taskCount">0 / 0 Completed</p>
+
+    <div class="progress">
+      <div id="taskBar"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Referral Milestones</h3>
+
+    <div class="mile">
+      <span>10 Referrals</span>
+      <button disabled>Claim 100 PTS</button>
+    </div>
+
+    <div class="mile">
+      <span>25 Referrals</span>
+      <button disabled>Claim 300 PTS</button>
+    </div>
+  </div>
+
+</section>
+
+<!-- TASKS -->
+<section id="tasks" class="page hide">
+
+  <h2>Tasks</h2>
+
+  <div class="task">
+    <h3>Join Telegram</h3>
+    <p>Reward: 50 PTS</p>
+
+    <a href="#">Open Task</a>
+
+    <button>Submit Screenshot</button>
+  </div>
+
+</section>
+
+<!-- TEAM -->
+<section id="team" class="page hide">
+
+  <h2>My Team</h2>
+
+  <div class="card">
+    <small>Referral Link</small>
+
+    <input id="refLink" readonly>
+
+    <button onclick="copyLink()">Copy Link</button>
+  </div>
+
+  <div class="card">
+    <h3>Total Referrals</h3>
+    <h1>0</h1>
+  </div>
+
+</section>
+
+<!-- WITHDRAWAL -->
+<section id="withdraw" class="page hide">
+
+  <h2>Withdrawal</h2>
+
+  <select>
+    <option>Task Balance</option>
+    <option>Referral Balance</option>
+  </select>
+
+  <input placeholder="Account Number">
+  <input placeholder="Account Name">
+  <input placeholder="Bank Name">
+
+  <button>Request Withdrawal</button>
+
+</section>
+
+<!-- PROFILE -->
+<section id="profile" class="page hide">
+
+  <h2>Profile</h2>
+
+  <div class="card">
+    <p><b>Name:</b> <span id="fullName"></span></p>
+    <p><b>Email:</b> <span id="emailTxt"></span></p>
+    <p><b>Joined:</b> <span id="joined"></span></p>
+  </div>
+
+  <!-- ADMIN BUTTON -->
+  <button id="adminBtn" style="display:none">
+    ⚙️ Admin Panel
+  </button>
+
+</section>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom">
+
+  <button onclick="showPage('home')">Home</button>
+
+  <button onclick="showPage('tasks')">Tasks</button>
+
+  <button onclick="showPage('team')">Team</button>
+
+  <button onclick="showPage('withdraw')">Withdrawal</button>
+
+  <button onclick="showPage('profile')">Profile</button>
+
+</nav>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+                       </html>
