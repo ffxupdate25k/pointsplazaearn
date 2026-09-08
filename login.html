@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Points Plaza - Login</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{
+background:linear-gradient(135deg,#eaf6ff,#d6efff);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+.container{width:100%;max-width:400px}
+.logo{text-align:center;margin-bottom:25px}
+.logo h1{color:#1e88e5;font-size:34px}
+.logo p{color:#666}
+.card{
+background:#fff;
+padding:22px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(30,136,229,.15);
+}
+h2{text-align:center;color:#1565c0;margin-bottom:18px}
+input{
+width:100%;
+padding:14px;
+margin:8px 0;
+border:1px solid #cfe8ff;
+border-radius:12px;
+outline:none;
+}
+button{
+width:100%;
+padding:14px;
+margin-top:12px;
+border:none;
+border-radius:12px;
+background:#1e88e5;
+color:#fff;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+.register{
+text-align:center;
+margin-top:18px;
+}
+.register a{
+color:#1e88e5;
+text-decoration:none;
+font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="logo">
+<h1>Points Plaza</h1>
+<p>Welcome Back</p>
+</div>
+
+<div class="card">
+
+<h2>Login</h2>
+
+<input type="text" id="email" placeholder="Email or Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">LOGIN</button>
+
+<p class="register">
+Don't have an account?
+<a href="index.html">Register</a>
+</p>
+
+</div>
+</div>
+
+<script>
+function login(){
+
+const user=JSON.parse(localStorage.getItem("currentUser"));
+
+let em=document.getElementById("email").value;
+let pw=document.getElementById("password").value;
+
+if(!user){
+alert("No account found");
+return;
+}
+
+if((em===user.email||em===user.username)&&pw===user.password){
+
+window.location.href="dashboard.html";
+
+}else{
+
+alert("Invalid login details");
+
+}
+
+}
+</script>
+
+</body>
+</html>
