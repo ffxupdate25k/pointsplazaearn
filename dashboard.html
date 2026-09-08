@@ -143,109 +143,47 @@ ring.style.background=`conic-gradient(#2196F3 ${pct}%,#D9EEFF ${pct}%)`;
 </script>
 
 </body>
-</html>}
-.bottom div{text-align:center;color:#666;font-size:12px}
-.popup{
-position:fixed;inset:0;background:rgba(0,0,0,.45);
-display:flex;justify-content:center;align-items:center;
-padding:20px
-}
-.box{
-background:#fff;border-radius:18px;padding:20px;
-width:100%;max-width:330px;text-align:center
-}
-.btn{display:block;text-decoration:none;color:#fff;padding:12px;border-radius:12px;margin:10px 0}
-.wa{background:#25D366}.tg{background:#229ED9}
-</style>
-</head>
-<body>
-
-<div class="popup" id="popup">
-<div class="box">
-<h2>Join Our Official Community</h2>
-<p>Get updates & new tasks</p>
-<a class="btn wa" href="#">WhatsApp</a>
-<a class="btn tg" href="#">Telegram</a>
-<button onclick="popup.style.display='none'" style="width:100%;padding:12px;border:none;background:#2196F3;color:#fff;border-radius:12px">Continue</button>
-</div>
-</div>
-
-<div class="header">
-<div class="top">
-<div>
-<h2 id="name">Welcome</h2>
-<p>Points Plaza</p>
-</div>
-<div class="noti">🔔</div>
-</div>
-</div>
-
-<div class="grid">
-<div class="item"><small>Task</small><h3 id="task">0</h3></div>
-<div class="item"><small>Referral</small><h3 id="ref">0</h3></div>
-<div class="item"><small>Tasks</small><h3 id="done">0</h3></div>
+</html>  <div class="stat"><div>📋</div><p>Tasks</p></div>
+  <div class="stat"><div>💸</div><p>Withdraw</p></div>
+  <div class="stat"><div>👥</div><p>Referrals</p></div>
+  <div class="stat"><div>📜</div><p>History</p></div>
 </div>
 
 <div class="card">
-<h3 style="text-align:center;margin-bottom:15px">Task Progress</h3>
+  <div class="head">
+    <h3>Today's Progress</h3>
+    <b id="count">0/10</b>
+  </div>
 
-<div class="circle" id="circle">
-<div class="inner"><span id="per">0%</span></div>
-</div>
+  <div class="circle" id="ring">
+    <div class="inner"><span id="percent">0%</span></div>
+  </div>
 
-<p style="text-align:center;margin-top:12px">
-<span id="completed">0</span> / <span id="total">10</span> Completed
-</p>
-</div>
-
-<div class="card">
-<h3>Referral Milestones</h3>
-
-<div class="mile">
-<span>10 Referrals</span>
-<button disabled>100 PTS</button>
-</div>
-
-<div class="mile">
-<span>25 Referrals</span>
-<button disabled>300 PTS</button>
-</div>
-
-<div class="mile">
-<span>50 Referrals</span>
-<button disabled>700 PTS</button>
-</div>
+  <p>Complete tasks to increase your Task Wallet.</p>
 </div>
 
 <div class="card">
-<h3>Notifications</h3>
-<p>🎉 Welcome to Points Plaza!</p>
-<p style="margin-top:8px">📢 Complete tasks to earn PTS.</p>
+  <h3>Referral Milestones</h3>
+
+  <div class="mile">
+    <span>10 Referrals</span>
+    <button disabled>100 PTS</button>
+  </div>
+
+  <div class="mile">
+    <span>25 Referrals</span>
+    <button disabled>300 PTS</button>
+  </div>
+
+  <div class="mile">
+    <span>50 Referrals</span>
+    <button disabled>700 PTS</button>
+  </div>
 </div>
 
-<div class="bottom">
-<div>🏠<br>Home</div>
-<div>📋<br>Tasks</div>
-<div>👥<br>Team</div>
-<div>💸<br>Withdraw</div>
-<div>👤<br>Profile</div>
+<div class="card">
+  <h3>Notifications</h3>
+  <p>🎉 Welcome to Points Plaza.</p>
+  <p style="margin-top:8px">📢 New tasks will appear here.</p>
 </div>
-
-<script>
-let u=JSON.parse(localStorage.getItem("currentUser"));
-if(u){
-name.innerHTML="Hi, "+u.fullname;
-task.innerHTML=u.taskBalance+" PTS";
-ref.innerHTML=u.referralBalance+" PTS";
-done.innerHTML=u.completedTasks||0;
-completed.innerHTML=u.completedTasks||0;
-
-let totalTasks=10;
-let percent=Math.round(((u.completedTasks||0)/totalTasks)*100);
-per.innerHTML=percent+"%";
-circle.style.background=`conic-gradient(#2196F3 ${percent}%,#D9EEFF ${percent}%)`;
-}
-</script>
-
-</body>
 </html>
