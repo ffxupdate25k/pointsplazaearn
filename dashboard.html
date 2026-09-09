@@ -2,74 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Points Plaza</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#EEF7FF;padding-bottom:90px;color:#222}
-.header{background:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-.logo{font-size:24px;font-weight:bold;color:#2196F3}
-.bell{position:relative;background:#E3F2FD;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.badge{position:absolute;top:-2px;right:-2px;background:#F44336;color:#fff;font-size:10px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.hero{padding:18px}
-.hero h2{font-size:26px}
-.hero p{color:#666;margin-top:5px}
-.wallet{margin:0 15px;background:linear-gradient(135deg,#42A5F5,#1E88E5);border-radius:22px;color:#fff;padding:18px}
-.walletTop{display:flex;justify-content:space-between;align-items:center}
-.withdraw{background:#FFD54F;color:#222;padding:10px 16px;border-radius:12px;font-weight:bold}
-.amount{font-size:32px;font-weight:bold;margin:10px 0}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
-.small{background:rgba(255,255,255,.15);padding:14px;border-radius:15px}
-.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:15px}
-.q{background:#fff;border-radius:16px;padding:12px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.08)}
-.q span{font-size:28px;color:#2196F3}
-.q p{font-size:12px;margin-top:5px}
-.card{background:#fff;margin:0 15px 15px;border-radius:20px;padding:18px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
-.head{display:flex;justify-content:space-between}
-.circle{width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:15px auto}
-.inner{width:82px;height:82px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;color:#2196F3}
-.mile{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
-.mile button{background:#2196F3;color:#fff;border:none;padding:8px 14px;border-radius:8px}
-.note{padding:10px 0;border-bottom:1px solid #eee;color:#555}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:74px;background:#fff;border-radius:22px 22px 0 0;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -4px 18px rgba(0,0,0,.08)}
-.nav{text-align:center;color:#7B8AA0;font-size:11px}
-.nav span{font-size:26px}
-.active{color:#2196F3}
-.earnBtn{width:60px;height:60px;background:#2196F3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:-30px;box-shadow:0 8px 20px rgba(33,150,243,.35);color:#fff}
-.popup{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:20px}
-.popupBox{background:#fff;width:100%;max-width:330px;border-radius:18px;padding:20px;text-align:center}
-.popupBox a{display:block;text-decoration:none;color:#fff;padding:12px;border-radius:12px;margin:10px 0}
-.wa{background:#25D366}.tg{background:#229ED9}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}body{background:#EEF7FF;color:#222;padding-bottom:90px}.header{background:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}.logo{font-size:24px;font-weight:bold;color:#2196F3}.bell{position:relative;width:42px;height:42px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center}.badge{position:absolute;top:-2px;right:-2px;background:#F44336;color:#fff;width:18px;height:18px;border-radius:50%;font-size:10px;display:flex;align-items:center;justify-content:center}.hero{padding:18px}.wallet{margin:0 15px;background:linear-gradient(135deg,#42A5F5,#1E88E5);border-radius:22px;color:#fff;padding:18px}.walletTop{display:flex;justify-content:space-between;align-items:center}.withdraw{background:#FFD54F;color:#222;padding:10px 15px;border-radius:10px;font-weight:bold}.amount{font-size:30px;font-weight:bold;margin:10px 0}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.small{background:rgba(255,255,255,.15);padding:12px;border-radius:14px}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:15px}.q{background:#fff;border-radius:16px;padding:12px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.08)}.q span{font-size:26px;color:#2196F3}.q p{font-size:11px;margin-top:5px}.card{background:#fff;margin:0 15px 15px;border-radius:18px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.head{display:flex;justify-content:space-between}.circle{width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:15px auto;background:conic-gradient(#2196F3 0%,#D9EEFF 0%)}.inner{width:82px;height:82px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;color:#2196F3}.mile{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #eee}.mile button{background:#2196F3;color:#fff;border:none;padding:8px 12px;border-radius:8px}.note{padding:10px 0;border-bottom:1px solid #eee}.popup{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:20px}.popupBox{background:#fff;width:100%;max-width:330px;border-radius:18px;padding:20px;text-align:center}.popupBox a{display:block;text-decoration:none;color:#fff;padding:12px;border-radius:12px;margin:10px 0}.wa{background:#25D366}.tg{background:#229ED9}.popupBox button{width:100%;padding:12px;border:none;border-radius:12px;background:#2196F3;color:#fff}.bottom{position:fixed;bottom:0;left:0;right:0;height:74px;background:#fff;border-radius:22px 22px 0 0;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -4px 18px rgba(0,0,0,.08)}.nav{text-align:center;color:#7B8AA0;font-size:11px}.nav span{font-size:26px}.active{color:#2196F3}.earnBtn{width:60px;height:60px;border-radius:50%;background:#2196F3;color:#fff;display:flex;align-items:center;justify-content:center;margin-top:-28px;box-shadow:0 8px 20px rgba(33,150,243,.35)}.earnBtn span{font-size:30px}#adminBtn{display:none;width:calc(100% - 30px);margin:0 15px 15px;padding:14px;background:#1565C0;color:#fff;border:none;border-radius:12px;font-weight:bold}
 </style>
 </head>
 <body>
-
-<div class="popup" id="communityPopup">
-  <div class="popupBox">
-    <h3>Join Our Official Community</h3>
-    <p>Get updates and new earning tasks.</p>
-
-    <a id="waLink" class="wa" href="#">WhatsApp</a>
-    <a id="tgLink" class="tg" href="#">Telegram</a>
-
-    <button onclick="communityPopup.style.display='none'" style="width:100%;padding:12px;border:none;background:#2196F3;color:#fff;border-radius:12px">Continue</button>
-  </div>
-</div>
-
-<div class="header">
-  <div class="logo">Points Plaza</div>
-
-  <div class="bell">
-    <span class="material-symbols-rounded">notifications</span>
-    <div class="badge" id="badge">0</div>
-  </div>
-</div>
-
-<div class="hero">
-  <h2>Good Evening, <span id="username">User</span> 👋</h2>
+<div class="popup" id="popup"><div class="popupBox"><h3>Join Our Official Community</h3><p>Get updates & new tasks</p><a id="waLink" href="#" class="wa">WhatsApp</a><a id="tgLink" href="#" class="tg">Telegram</a><button onclick="popup.style.display='none'">Continue</button></div></div><div class="header"><div class="logo">Points Plaza</div><div class="bell"><span class="material-symbols-rounded">notifications</span><div class="badge" id="badge">0</div></div></div><div class="hero"><h2>Good Evening, <span id="username">User</span> 👋</h2><p>Here's your PTS dashboard today.</p></div><div class="wallet"><div class="walletTop"><div><small>AVAILABLE BALANCE</small><div class="amount" id="mainBalance">0 PTS</div></div><div class="withdraw">Withdraw</div></div><div class="row"><div class="small"><small>Task Wallet</small><h3 id="taskBalance">0 PTS</h3></div><div class="small"><small>Referral Wallet</small><h3 id="refBalance">0 PTS</h3></div></div></div><div class="quick"><div class="q"><span class="material-symbols-rounded">task_alt</span><p>Tasks</p></div><div class="q"><span class="material-symbols-rounded">account_balance</span><p>Withdraw</p></div><div class="q"><span class="material-symbols-rounded">groups</span><p>Referrals</p></div><div class="q"><span class="material-symbols-rounded">history</span><p>History</p></div></div><div class="card"><div class="head"><h3>Today's Progress</h3><b id="taskCount">0/0</b></div><div class="circle" id="ring"><div class="inner" id="percent">0%</div></div><p style="text-align:center">Complete tasks to increase your Task Wallet.</p></div><div class="card"><h3>Referral Milestones</h3><div id="milestones"></div></div><div class="card"><h3>Notifications</h3><div id="notifications"></div></div><button id="adminBtn">⚙ Admin Panel</button><div class="bottom"><div class="nav active" onclick="location.href='dashboard.html'"><span class="material-symbols-rounded">home</span><p>Home</p></div><div class="nav" onclick="location.href='tasks.html'"><span class="material-symbols-rounded">task_alt</span><p>Tasks</p></div><div class="earnBtn" onclick="location.href='earn.html'"><span class="material-symbols-rounded">bolt</span></div><div class="nav" onclick="location.href='team.html'"><span class="material-symbols-rounded">groups</span><p>Team</p></div><div class="nav" onclick="location.href='profile.html'"><span class="material-symbols-rounded">person</span><p>Profile</p></div></div><script>
+const user=JSON.parse(localStorage.getItem('currentUser'))||{fullname:'User',email:'',taskBalance:0,referralBalance:0,completedTasks:0};document.getElementById('username').innerText=user.fullname;document.getElementById('taskBalance').innerText=user.taskBalance+' PTS';document.getElementById('refBalance').innerText=user.referralBalance+' PTS';document.getElementById('mainBalance').innerText=(user.taskBalance+user.referralBalance)+' PTS';const totalTasks=10,done=user.completedTasks||0,p=Math.round(done/totalTasks*100);document.getElementById('taskCount').innerText=done+'/'+totalTasks;document.getElementById('percent').innerText=p+'%';document.getElementById('ring').style.background=`conic-gradient(#2196F3 ${p}%,#D9EEFF ${p}%)`;if(user.email==='azeemolajuwon25@gmail.com'){document.getElementById('adminBtn').style.display='block'}const milestones=[{r:10,p:100},{r:25,p:300},{r:50,p:700}],m=document.getElementById('milestones');milestones.forEach(x=>m.innerHTML+=`<div class='mile'><span>${x.r} Referrals</span><button disabled>${x.p} PTS</button></div>`);const notes=['Welcome to Points Plaza','New tasks will appear here'],n=document.getElementById('notifications');document.getElementById('badge').innerText=notes.length;notes.forEach(v=>n.innerHTML+=`<div class='note'>📢 ${v}</div>`);
+</script></body></html>  <h2>Good Evening, <span id="username">User</span> 👋</h2>
   <p>Here's your Points Plaza dashboard.</p>
 </div>
 
