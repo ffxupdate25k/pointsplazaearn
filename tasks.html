@@ -1,67 +1,166 @@
-const tasks = [
-  {
-    id: 1,
-    name: "Join Telegram",
-    reward: 50,
-    link: "https://t.me/yourchannel",
-    instruction: "Join our Telegram channel."
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Points Plaza - Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#EEF7FF;padding-bottom:90px}
+.header{background:#2196F3;color:#fff;padding:18px;border-radius:0 0 22px 22px}
+.header h2{font-size:24px}
+.header p{font-size:13px;opacity:.9}
+.card{background:#fff;margin:15px;border-radius:18px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.reward{display:inline-block;background:#E3F2FD;color:#1976D2;padding:6px 12px;border-radius:20px;font-weight:bold;margin:10px 0}
+.btn{width:100%;padding:13px;border:none;border-radius:12px;font-weight:bold;margin-top:10px}
+.open{background:#2196F3;color:#fff}
+.submit{background:#00A86B;color:#fff}
+.pending{background:#FF9800;color:#fff}
+.proof{display:none;margin-top:12px}
+input[type=file]{width:100%;padding:10px;border:2px dashed #90CAF9;border-radius:12px;background:#F8FCFF}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:74px;background:#fff;display:flex;justify-content:space-around;align-items:center;border-radius:22px 22px 0 0;box-shadow:0 -4px 18px rgba(0,0,0,.08)}
+.nav{text-align:center;color:#777;font-size:11px}
+.nav span{font-size:26px}
+.active{color:#2196F3}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h2>Available Tasks</h2>
+<p>Complete tasks & submit screenshot for review</p>
+</div>
+
+<div id="taskList"></div>
+
+<div class="bottom">
+<div class="nav" onclick="location.href='dashboard.html'">
+<span class="material-symbols-rounded">home</span>
+<p>Home</p>
+</div>
+
+<div class="nav active">
+<span class="material-symbols-rounded">task_alt</span>
+<p>Tasks</p>
+</div>
+
+<div class="nav" onclick="location.href='team.html'">
+<span class="material-symbols-rounded">groups</span>
+<p>Team</p>
+</div>
+
+<div class="nav" onclick="location.href='withdrawal.html'">
+<span class="material-symbols-rounded">account_balance</span>
+<p>Withdraw</p>
+</div>
+
+<div class="nav" onclick="location.href='profile.html'">
+<span class="material-symbols-rounded">person</span>
+<p>Profile</p>
+</div>
+</div>
+
+<script>
+const tasks=[
+{
+id:1,
+name:"Join Telegram Channel",
+instruction:"Join our official Telegram channel.",
+reward:50,
+link:"https://t.me/yourchannel"
+},
+{
+id:2,
+name:"Join WhatsApp Group",
+instruction:"Join our WhatsApp community.",
+reward:50,
+link:"https://chat.whatsapp.com/yourlink"
+}
 ];
 
-const list = document.getElementById("taskList");
-let submissions = JSON.parse(localStorage.getItem("taskSubmissions")) || {};
+let submissions=JSON.parse(localStorage.getItem("taskSubmissions"))||{};
 
-tasks.forEach(task => {
-  const status = submissions[task.id]?.status || "";
+const list=document.getElementById("taskList");
 
-  list.innerHTML += `
-  <div class="card">
-    <h3>${task.name}</h3>
-    <p>${task.instruction}</p>
-    <p class="reward">+${task.reward} PTS</p>
+tasks.forEach(task=>{
 
-    <button class="btn open" onclick="openTask(${task.id}, '${task.link}')">
-      Open Task
-    </button>
+const status=submissions[task.id]?.status||"";
 
-    <div id="proofBox${task.id}" style="display:none;margin-top:12px">
-      <input type="file" id="proof${task.id}" accept="image/*">
-      <button class="btn submit" onclick="submitTask(${task.id})">
-        Submit Screenshot
-      </button>
-    </div>
+list.innerHTML+=`
+<div class="card">
 
-    <button id="status${task.id}" class="btn submit" disabled
-      style="display:${status==='pending'?'block':'none'};background:#FF9800">
-      Pending Review
-    </button>
-  </div>`;
+<h3>${task.name}</h3>
+
+<p>${task.instruction}</p>
+
+<div class="reward">+${task.reward} PTS</div>
+
+<button class="btn open" onclick="openTask(${task.id},'${task.link}')">
+Open Task
+</button>
+
+<div class="proof" id="proof${task.id}">
+<input type="file" id="file${task.id}" accept="image/*">
+
+<button class="btn submit" onclick="submitTask(${task.id})">
+Submit Screenshot
+</button>
+</div>
+
+${status==="pending"?
+`<button class="btn pending" disabled>
+Pending Review
+</button>`:""}
+
+</div>
+`;
+
+if(status==="opened"){
+document.getElementById("proof"+task.id).style.display="block";
+}
+
 });
 
-function openTask(id, link){
-  window.open(link, "_blank");
-  if(!submissions[id]){
-    document.getElementById("proofBox"+id).style.display = "block";
-  }
+function openTask(id,link){
+
+window.open(link,"_blank");
+
+if(!submissions[id]){
+
+submissions[id]={status:"opened"};
+
+localStorage.setItem("taskSubmissions",JSON.stringify(submissions));
+
+document.getElementById("proof"+id).style.display="block";
+
+}
+
 }
 
 function submitTask(id){
-  const file = document.getElementById("proof"+id).files[0];
 
-  if(!file){
-    alert("Please upload your screenshot.");
-    return;
-  }
+const file=document.getElementById("file"+id).files[0];
 
-  submissions[id] = {
-    status: "pending",
-    submittedAt: new Date().toISOString()
-  };
-
-  localStorage.setItem("taskSubmissions", JSON.stringify(submissions));
-
-  document.getElementById("proofBox"+id).style.display = "none";
-  document.getElementById("status"+id).style.display = "block";
-
-  alert("Task submitted successfully. Waiting for admin review.");
+if(!file){
+alert("Upload your screenshot first.");
+return;
 }
+
+submissions[id]={
+status:"pending",
+submitted:new Date().toLocaleString()
+};
+
+localStorage.setItem("taskSubmissions",JSON.stringify(submissions));
+
+location.reload();
+
+alert("Task submitted successfully. Waiting for admin review.");
+
+}
+</script>
+
+</body>
+  </html>
