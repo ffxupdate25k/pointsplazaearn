@@ -4,67 +4,158 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Points Plaza</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#EEF7FF;padding-bottom:85px;color:#222}
+body{background:#EEF7FF;padding-bottom:90px;color:#222}
 .header{background:#fff;padding:18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-.logo{color:#2196F3;font-size:22px;font-weight:bold}
-.bell{width:42px;height:42px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center}
+.logo{font-size:24px;font-weight:bold;color:#2196F3}
+.bell{position:relative;width:44px;height:44px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center}
+.badge{position:absolute;top:-2px;right:-2px;background:#F44336;color:#fff;width:18px;height:18px;border-radius:50%;font-size:11px;display:flex;align-items:center;justify-content:center}
 .hero{padding:18px}
-.hero h2{font-size:28px}
+.hero h2{font-size:26px}
 .hero p{color:#666;margin-top:5px}
 .wallet{margin:0 15px;background:linear-gradient(135deg,#42A5F5,#1E88E5);border-radius:22px;color:#fff;padding:18px}
-.wallet .top{display:flex;justify-content:space-between;align-items:center}
+.walletTop{display:flex;justify-content:space-between;align-items:center}
 .withdraw{background:#FFD54F;color:#222;padding:10px 16px;border-radius:12px;font-weight:bold}
 .amount{font-size:34px;font-weight:bold;margin:10px 0}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
 .small{background:rgba(255,255,255,.15);padding:14px;border-radius:15px}
-.small h3{margin-top:5px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:15px}
-.stat{background:#fff;border-radius:16px;padding:14px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.08)}
-.stat div{font-size:24px}
-.stat p{font-size:12px;margin-top:6px}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:15px}
+.q{background:#fff;border-radius:16px;padding:12px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.08)}
+.q span{font-size:28px;color:#2196F3}
+.q p{font-size:12px;margin-top:5px}
 .card{background:#fff;margin:0 15px 15px;border-radius:20px;padding:18px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
 .head{display:flex;justify-content:space-between}
-.circle{width:100px;height:100px;border-radius:50%;background:conic-gradient(#2196F3 0%,#D9EEFF 0%);display:flex;align-items:center;justify-content:center;margin:15px 0}
-.inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#2196F3}
-.mile{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee}
+.circle{width:110px;height:110px;border-radius:50%;background:conic-gradient(#2196F3 0%,#D9EEFF 0%);display:flex;align-items:center;justify-content:center;margin:15px auto}
+.inner{width:82px;height:82px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;color:#2196F3}
+.mile{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
 .mile button{background:#2196F3;color:#fff;border:none;padding:8px 14px;border-radius:8px}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:70px;background:#fff;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -4px 15px rgba(0,0,0,.08)}
-.nav{text-align:center;font-size:11px;color:#666}
-.nav div{font-size:22px;margin-bottom:3px}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:74px;background:#fff;border-radius:22px 22px 0 0;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -4px 18px rgba(0,0,0,.08)}
+.nav{text-align:center;color:#7B8AA0;font-size:11px}
+.nav span{font-size:26px}
+.active{color:#2196F3}
+.earnBtn{width:60px;height:60px;background:#2196F3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:-30px;box-shadow:0 8px 20px rgba(33,150,243,.35);color:#fff}
+.earnBtn span{font-size:30px}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo">Points Plaza</div>
-  <div class="bell">🔔</div>
+<div class="logo">Points Plaza</div>
+<div class="bell">
+<span class="material-symbols-rounded">notifications</span>
+<div class="badge">3</div>
+</div>
 </div>
 
 <div class="hero">
-  <h2>Good Evening, <span id="user">User</span> 👋</h2>
-  <p>Here's your PTS dashboard today.</p>
+<h2>Good Evening, <span id="user">User</span> 👋</h2>
+<p>Here's your PTS dashboard today.</p>
 </div>
 
 <div class="wallet">
-  <div class="top">
-    <div>
-      <small>AVAILABLE BALANCE</small>
-      <div class="amount" id="main">0 PTS</div>
-    </div>
-    <div class="withdraw">Withdraw</div>
-  </div>
+<div class="walletTop">
+<div>
+<small>AVAILABLE BALANCE</small>
+<div class="amount" id="main">0 PTS</div>
+</div>
+<div class="withdraw">Withdraw</div>
+</div>
 
-  <div class="row">
-    <div class="small">
-      <small>Task Wallet</small>
-      <h3 id="task">0 PTS</h3>
-    </div>
-    <div class="small">
-      <small>Referral Wallet</small>
-      <h3 id="ref">0 PTS</h3>
-    </div>
+<div class="row">
+<div class="small">
+<small>Task Wallet</small>
+<h3 id="task">0 PTS</h3>
+</div>
+<div class="small">
+<small>Referral Wallet</small>
+<h3 id="ref">0 PTS</h3>
+</div>
+</div>
+</div>
+
+<div class="quick">
+<div class="q"><span class="material-symbols-rounded">task_alt</span><p>Tasks</p></div>
+<div class="q"><span class="material-symbols-rounded">account_balance</span><p>Withdraw</p></div>
+<div class="q"><span class="material-symbols-rounded">groups</span><p>Referrals</p></div>
+<div class="q"><span class="material-symbols-rounded">history</span><p>History</p></div>
+</div>
+
+<div class="card">
+<div class="head">
+<h3>Today's Progress</h3>
+<b id="count">0/10</b>
+</div>
+
+<div class="circle" id="ring">
+<div class="inner" id="percent">0%</div>
+</div>
+
+<p style="text-align:center">Complete tasks to increase your Task Wallet.</p>
+</div>
+
+<div class="card">
+<h3>Referral Milestones</h3>
+
+<div class="mile"><span>10 Referrals</span><button disabled>100 PTS</button></div>
+<div class="mile"><span>25 Referrals</span><button disabled>300 PTS</button></div>
+<div class="mile"><span>50 Referrals</span><button disabled>700 PTS</button></div>
+</div>
+
+<div class="card">
+<h3>Notifications</h3>
+<p>🎉 Welcome to Points Plaza.</p>
+<p style="margin-top:8px">📢 New tasks will appear here.</p>
+</div>
+
+<div class="bottom">
+<div class="nav active">
+<span class="material-symbols-rounded">home</span>
+<p>Home</p>
+</div>
+
+<div class="nav">
+<span class="material-symbols-rounded">task_alt</span>
+<p>Tasks</p>
+</div>
+
+<div class="earnBtn">
+<span class="material-symbols-rounded">bolt</span>
+</div>
+
+<div class="nav">
+<span class="material-symbols-rounded">groups</span>
+<p>Referrals</p>
+</div>
+
+<div class="nav">
+<span class="material-symbols-rounded">person</span>
+<p>Profile</p>
+</div>
+</div>
+
+<script>
+const u=JSON.parse(localStorage.getItem("currentUser"))||{fullname:"User",taskBalance:0,referralBalance:0,completedTasks:0};
+
+document.getElementById("user").innerText=u.fullname;
+document.getElementById("task").innerText=u.taskBalance+" PTS";
+document.getElementById("ref").innerText=u.referralBalance+" PTS";
+document.getElementById("main").innerText=(u.taskBalance+u.referralBalance)+" PTS";
+
+let total=10;
+let done=u.completedTasks||0;
+let pct=Math.round(done/total*100);
+
+document.getElementById("count").innerText=done+"/"+total;
+document.getElementById("percent").innerText=pct+"%";
+document.getElementById("ring").style.background=`conic-gradient(#2196F3 ${pct}%,#D9EEFF ${pct}%)`;
+</script>
+
+</body>
+  </html>    </div>
   </div>
 </div>
 
